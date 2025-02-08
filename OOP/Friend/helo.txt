@@ -1,0 +1,90 @@
+A **copy constructor** in C++ is used to create a new object by copying the values of an existing object. It ensures that when a new object is created from an existing one, the values are copied correctly, especially for objects with dynamically allocated memory or resources.
+
+### Real-World Example of a **Copy Constructor**:  
+Let's consider a **`Book`** class, which might represent a book in a library system. The `Book` class has a title and an author, and let's assume that we want to create a copy of a book object when adding it to a library's collection.
+
+Here's a C++ code example that demonstrates the use of a copy constructor:
+
+```cpp
+#include <iostream>
+#include <cstring>  // For strcpy and strlen
+
+using namespace std;
+
+class Book {
+private:
+    char* title;
+    char* author;
+
+public:
+    // Constructor
+    Book(const char* t, const char* a) {
+        title = new char[strlen(t) + 1];
+        author = new char[strlen(a) + 1];
+        strcpy(title, t);
+        strcpy(author, a);
+    }
+
+    // Copy Constructor
+    Book(const Book& other) {
+        title = new char[strlen(other.title) + 1];  // Allocate new memory
+        author = new char[strlen(other.author) + 1];  // Allocate new memory
+        strcpy(title, other.title);  // Copy the title
+        strcpy(author, other.author);  // Copy the author
+    }
+
+    // Destructor
+    ~Book() {
+        delete[] title;
+        delete[] author;
+    }
+
+    // Display details
+    void display() const {
+        cout << "Title: " << title << ", Author: " << author << endl;
+    }
+};
+
+int main() {
+    // Create an object of Book
+    Book book1("The Great Gatsby", "F. Scott Fitzgerald");
+
+    // Create a copy using the copy constructor
+    Book book2 = book1;
+
+    // Display both books
+    book1.display();
+    book2.display();
+
+    return 0;
+}
+```
+
+### **Explanation**:
+1. **Constructor**:
+   - The constructor initializes the `title` and `author` fields by dynamically allocating memory for them using `new`.
+
+2. **Copy Constructor**:
+   - The copy constructor takes a reference to another `Book` object and performs a **deep copy** of the data. It allocates new memory and copies the values from the source object to the new object.
+   
+3. **Destructor**:
+   - The destructor ensures that the dynamically allocated memory for `title` and `author` is deallocated when the object is destroyed.
+
+4. **Using the Copy Constructor**:
+   - In `main()`, the `Book` object `book2` is created as a copy of `book1` using the copy constructor.
+
+### **Output**:
+```
+Title: The Great Gatsby, Author: F. Scott Fitzgerald
+Title: The Great Gatsby, Author: F. Scott Fitzgerald
+```
+
+### **Why Use a Copy Constructor?**
+- **Deep Copy**: The copy constructor ensures that when a new object is created from an existing one, the memory for dynamic data (like the `title` and `author`) is allocated separately. This prevents issues like shared memory between objects, which could lead to **dangling pointers** or **memory leaks**.
+
+- **Real-World Use**: In real-world applications, you often need to copy objects when dealing with collections (like arrays, lists, or maps) or when passing objects by value to functions. The copy constructor handles how the object is copied safely and efficiently.
+
+### **When is the Copy Constructor Called?**
+1. When a new object is initialized from another object (e.g., `Book book2 = book1;`).
+2. When passing an object by value to a function.
+3. When returning an object by value from a function.
