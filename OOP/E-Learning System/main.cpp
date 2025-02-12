@@ -104,25 +104,29 @@ private:
     vector<Course *> courses;
 
 public:
-    Teacher (string userId, string name, string email, string password) : User(userId, name, email, password) {};
+    Teacher(string userId, string name, string email, string password) : User(userId, name, email, password) {};
 
     // Teacher Methods
-    
-    // Create Course 
-    void createCourse(Course * it) {
+
+    // Create Course
+    void createCourse(Course *it)
+    {
         courses.push_back(it);
         cout << "Course Created: " << it->getCourseName() << endl;
     }
 
     // Display Role
-    void displayRole() override {
-        cout << "I am Teacher "<< endl;
+    void displayRole() override
+    {
+        cout << "I am Teacher " << endl;
     }
 
     // Show all created Coursed
-    void showCreatedCourses() const {
+    void showCreatedCourses() const
+    {
         cout << "Courses Created: ";
-        for (const auto & it : courses) {
+        for (const auto &it : courses)
+        {
             cout << " - " << it->getCourseName() << ", ";
         }
 
@@ -130,6 +134,68 @@ public:
     }
 
     // virtual Desctructor
-    virtual ~Teacher() {}; 
+    virtual ~Teacher() {};
+};
+
+/*
++++++++++ COURSES CLASS +++++++++
+*/
+
+class Course
+{
+private:
+    string courseId, courseName, description;
+    double price;
+    Teacher *teacher;           // Teacher who is teaching the course
+    vector<Student *> students; // Students Enrolled in the course
+
+public:
+    Course(string courseId, string courseName, string description, double price, Teacher *teacher)
+    {
+        this->courseId = courseId;
+        this->courseName = courseName;
+        this->description = description;
+        this->price = price;
+        this->teacher = teacher;
+    }
+
+    // Course Methods
+    string getCourseName() const
+    {
+        return courseName;
+    }
+
+    double getCoursePrice() const
+    {
+        return price;
+    }
+
+    // Enroll Students
+    void addStudent(Student *it)
+    {
+        students.push_back(it);
+        cout << "Student Enrolled: " << it->getName() << " in " << courseName << endl;
+    }
+
+    // Show all Enrolled students
+    void showEnrolledStudents() const
+    {
+        cout << "Students Enrolled: ";
+        for (const auto &it : students)
+        {
+            cout << " - " << it->getName() << ", ";
+        }
+        cout << endl;
+    }
+
+    void showCourseDetails() const
+    {
+        cout << "Course Name: " << courseName << endl;
+        cout << "Course Description: " << description << endl;
+        cout << "Course Price: " << price << endl;
+
+        cout << "Teacher: " << teacher->getName() << endl;
+        showEnrolledStudents(); // Show all Enrolled Students
+    };
 };
 
