@@ -199,3 +199,175 @@ public:
     };
 };
 
+/*
++++++++++ Payment Processor +++++++++
+*/
+
+// PaymentMethod Interface
+class IPaymentMethod
+{
+public:
+    virtual bool processPayment(double amount) = 0; // Pure Virtual Function
+    virtual ~IPaymentMethod() {};
+};
+
+/*
+=========== CreditCard Payment Method ===========
+Concrete Implementation of IPaymentMethod Interface
+*/
+
+class CreditCardPayment : public IPaymentMethod
+{
+private:
+    string cardNumber, expiryDate, cvv;
+
+public:
+    CreditCardPayment(string cardNumber, string expiryDate, string cvv)
+    {
+        this->cardNumber = cardNumber;
+        this->expiryDate = expiryDate;
+        this->cvv = cvv;
+    }
+
+    // Process Payment
+    bool processPayment(double amount) override
+    {
+        cout << "Processing Credit Card Payment of " << amount << endl;
+        return true;
+    }
+
+    // virtual destructor
+    virtual ~CreditCardPayment() {};
+};
+
+/*
+============ PayPal Payment ============
+Concrete Implementation of IPaymentMethod Interface
+*/
+
+class PayPalPayment : public IPaymentMethod
+{
+private:
+    string email, password;
+
+public:
+    PayPal(string email, string password)
+    {
+        this->email = email;
+        this->password = password;
+    }
+
+    // Process PayPal payment
+    bool processPayment(double amount) override
+    {
+        cout << "Processing PayPal Payment of " << amount << endl;
+        return true;
+    }
+
+    // Virtual Destructor
+    virtual ~PayPal() {};
+};
+
+/*
+============ Stripe Payment Method ===============
+Concrete Implementation of IPaymentMethod Interface
+*/
+
+class StripePayment : public IPaymentMethod
+{
+private:
+    string apiKey;
+
+public:
+    Stripe(string apiKey)
+    {
+        this->apiKey = apiKey;
+    }
+
+    // Process Stripe Payment
+    bool processPayment(double amount) override
+    {
+        cout << "Processing Stripe Payment of " << amount << endl;
+        return true;
+    }
+
+    // virtual Destructor
+    virtual ~Stripe() {};
+};
+
+// PaymentProcessor
+class PaymentService
+{
+private:
+    IPaymentMethod *paymentMethod;
+
+public:
+    PaymentService(IPaymentMethod *it)
+    {
+        paymentMethod = it;
+    }
+
+    void process(double amount)
+    {
+        paymentMethod->processPayment(amount);
+    }
+
+    virtual ~PaymentService() {};
+};
+
+
+/*
+=============================================
+        Building Notification System 
+=============================================
+*/
+
+class INotification {
+    public: 
+        virtual bool sendNotification (string message) = 0; // Pure virtual function
+        virtual ~INotification() {};
+};
+
+/*
+================= Email Notification =================
+*/
+
+class EmailNotification : public INotification {
+    public: 
+        bool sendNotification (const string & message, const User * it) override {
+            cout << "Sending Email Notification to " << it->getUserEmail() << " : " << message << endl;
+            return true;
+        }
+};
+
+/*
+=============== SMS Notification ==================
+*/
+class SMSNotification : public INotification {
+    public: 
+        bool sendNotification (const string & message, const User * it) override {
+            cout << "Sending SMS Notification to " << it->getUserName() << " : " << message << endl;
+            return true;
+        }
+};
+
+
+/*
+================= Notification Manager =================
+*/
+
+class NotificationManager {
+    private: 
+        INotification * notifier;
+
+    public: 
+        NotificationManager(INotification & it) {
+            notifier = & it;
+        }
+
+        void notify(string message, const User * it) {
+            notifier->sendNotification(message, it);
+        }
+};
+
+
