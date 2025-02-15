@@ -315,59 +315,118 @@ public:
     virtual ~PaymentService() {};
 };
 
-
 /*
 =============================================
-        Building Notification System 
+        Building Notification System
 =============================================
 */
 
-class INotification {
-    public: 
-        virtual bool sendNotification (string message) = 0; // Pure virtual function
-        virtual ~INotification() {};
+class INotification
+{
+public:
+    virtual bool sendNotification(string message) = 0; // Pure virtual function
+    virtual ~INotification() {};
 };
 
 /*
 ================= Email Notification =================
 */
 
-class EmailNotification : public INotification {
-    public: 
-        bool sendNotification (const string & message, const User * it) override {
-            cout << "Sending Email Notification to " << it->getUserEmail() << " : " << message << endl;
-            return true;
-        }
+class EmailNotification : public INotification
+{
+public:
+    bool sendNotification(const string &message, const User *it) override
+    {
+        cout << "Sending Email Notification to " << it->getUserEmail() << " : " << message << endl;
+        return true;
+    }
 };
 
 /*
 =============== SMS Notification ==================
 */
-class SMSNotification : public INotification {
-    public: 
-        bool sendNotification (const string & message, const User * it) override {
-            cout << "Sending SMS Notification to " << it->getUserName() << " : " << message << endl;
-            return true;
-        }
+class SMSNotification : public INotification
+{
+public:
+    bool sendNotification(const string &message, const User *it) override
+    {
+        cout << "Sending SMS Notification to " << it->getUserName() << " : " << message << endl;
+        return true;
+    }
 };
-
 
 /*
 ================= Notification Manager =================
 */
 
-class NotificationManager {
-    private: 
-        INotification * notifier;
+class NotificationManager
+{
+private:
+    INotification *notifier;
 
-    public: 
-        NotificationManager(INotification & it) {
-            notifier = & it;
-        }
+public:
+    NotificationManager(INotification &it)
+    {
+        notifier = &it;
+    }
 
-        void notify(string message, const User * it) {
-            notifier->sendNotification(message, it);
-        }
+    void notify(string message, const User *it)
+    {
+        notifier->sendNotification(message, it);
+    }
 };
 
+int main()
+{
+    Teacher *teacher1 = new Teacher("T001", "Dr. John Doe", "johndoe@email.com", "securepass");
 
+    
+    Course *course1 = new Course("C101", "Introduction to C++", "Learn the basics of C++", 49.99, teacher1);
+    Course *course2 = new Course("C102", "Advanced C++", "Master C++ programming", 79.99, teacher1);
+
+    // Assign courses to the teacher
+    teacher1->createCourse(course1);
+    teacher1->createCourse(course2);
+    teacher1->showCreatedCourses();
+
+    // Creating a student
+    Student *student1 = new Student("S001", "Alice Johnson", "alice@email.com", "alicepass");
+
+    // Enrolling student in courses
+    student1->addCourse(course1);
+    student1->addCourse(course2);
+    course1->addStudent(student1);
+    course2->addStudent(student1);
+
+    // Display enrolled courses for the student
+    student1->showEnrolledCourses();
+    course1->showCourseDetails();
+    course2->showCourseDetails();
+
+    // Payment processing using different methods
+    IPaymentMethod *creditCard = new CreditCardPayment("1234-5678-9876-5432", "12/25", "123");
+    PaymentService *paymentService1 = new PaymentService(creditCard);
+    paymentService1->process(course1->getCoursePrice());
+
+    IPaymentMethod *paypal = new PayPalPayment("alice@email.com", "alicepass");
+    PaymentService *paymentService2 = new PaymentService(paypal);
+    paymentService2->process(course2->getCoursePrice());
+
+    // Notification system
+    INotification *emailNotifier = new EmailNotification();
+    NotificationManager *notificationManager = new NotificationManager(*emailNotifier);
+    notificationManager->notify("Welcome to the course!", student1);
+
+    delete teacher1;
+    delete course1;
+    delete course2;
+    delete student1;
+    delete creditCard;
+    delete paypal;
+    delete paymentService1;
+    delete paymentService2;
+    delete emailNotifier;
+    delete notificationManager;
+
+    return 0;
+}
