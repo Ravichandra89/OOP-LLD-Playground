@@ -9,7 +9,7 @@ class IEventStore
 {
 public:
     virtual ~IEventStore() = default;
-    virtual void storeEvent(const string &eventType,const string &data) = 0;
+    virtual void storeEvent(const string &eventType, const string &data) = 0;
     virtual vector<string> getEvents(const string &entityId) = 0;
 };
 

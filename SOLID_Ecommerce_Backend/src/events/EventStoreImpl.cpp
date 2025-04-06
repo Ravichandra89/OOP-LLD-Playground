@@ -3,10 +3,12 @@
 
 using namespace std;
 
-void EventStoreImpl::storeEvent(const string &eventType, string &data) {
+void EventStoreImpl::storeEvent(const string &eventType, const string &data)
+{
     events[eventType].push_back(data);
 }
 
-vector<string> EventStoreImpl::getEvents(const string & entityId) {
+vector<string> EventStoreImpl::getEvents(const string &entityId)
+{
     return events[entityId];
 }
