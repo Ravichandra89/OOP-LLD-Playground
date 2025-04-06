@@ -4,39 +4,45 @@
 #include <string>
 using namespace std;
 
+class Order
+{
+private:
+    string orderId, status, userId;
+    double amount;
 
-class Order {
-    private: 
-        string orderId, status, userId;
-        double amount;
-    public:    
-        Order(const string & orderId, const string & status, const string & userId, double amount) {
-            this->orderId = orderId;
-            this->status = status;
-            this->userId = userId;
-            this->amount = amount;
-        }
+public:
+    Order(const string &orderId, const string &userId, double amount)
+    {
+        this->orderId = orderId;
+        this->userId = userId;
+        this->amount = amount;
+    }
 
-        // Methods
-        string getOrderId() const {
-            return orderId;
-        }
+    // Methods
+    string getOrderId() const
+    {
+        return orderId;
+    }
 
-        string getStatus() const {
-            return status;
-        }
+    string getStatus() const
+    {
+        return status;
+    }
 
-        string getUserId() const {
-            return userId;
-        }
+    string getUserId() const
+    {
+        return userId;
+    }
 
-        double getAmount() const {
-            return amount;
-        }
+    double getAmount() const
+    {
+        return amount;
+    }
 
-        void setStatus (const string & status) {
-            this->status = status;
-        }
+    void setStatus(const string &status)
+    {
+        this->status = status;
+    }
 };
 
 #endif
