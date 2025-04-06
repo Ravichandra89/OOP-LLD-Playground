@@ -11,32 +11,7 @@ A modular C++ application designed using **SOLID Principles**, demonstrating a f
 ---
 ## Directory Structure
 
-PaymentProcessor/
-│── src/
-│   ├── payments/
-│   │   ├── IPaymentMethod.hpp
-│   │   ├── CreditCardPayment.hpp
-│   │   ├── CreditCardPayment.cpp
-│   │   ├── PayPalPayment.hpp
-│   │   ├── PayPalPayment.cpp
-│   │   ├── UPIPayment.hpp
-│   │   ├── UPIPayment.cpp
-│   │   ├── CryptoPayment.hpp
-│   │   ├── CryptoPayment.cpp
-│   ├── discounts/
-│   │   ├── IDiscount.hpp
-│   │   ├── NoDiscount.hpp
-│   │   ├── NoDiscount.cpp
-│   │   ├── PercentageDiscount.hpp
-│   │   ├── PercentageDiscount.cpp
-│   ├── logger/
-│   │   ├── ILogger.hpp
-│   │   ├── ConsoleLogger.hpp
-│   │   ├── ConsoleLogger.cpp
-│   ├── PaymentProcessor.hpp
-│   ├── PaymentProcessor.cpp
-│── main.cpp
-│── Makefile
+PaymentProcessor/├── src/│ ├── payments/ # 💰 Payment Method Interfaces & Implementations│ │ ├── IPaymentMethod.hpp # Base payment interface│ │ ├── CreditCardPayment.hpp # Credit Card payment method│ │ ├── CreditCardPayment.cpp│ │ ├── PayPalPayment.hpp # PayPal payment method│ │ ├── PayPalPayment.cpp│ │ ├── UPIPayment.hpp # UPI payment method│ │ ├── UPIPayment.cpp│ │ ├── CryptoPayment.hpp # Crypto payment method│ │ ├── CryptoPayment.cpp││ ├── discounts/ # 🎁 Discount Strategies│ │ ├── IDiscount.hpp # Base discount interface│ │ ├── NoDiscount.hpp # No discount strategy│ │ ├── NoDiscount.cpp│ │ ├── PercentageDiscount.hpp # Percentage-based discount│ │ ├── PercentageDiscount.cpp││ ├── logger/ # 📋 Logging Interfaces│ │ ├── ILogger.hpp # Logger interface│ │ ├── ConsoleLogger.hpp # Console-based logger│ │ ├── ConsoleLogger.cpp││ ├── PaymentProcessor.hpp # Core processor interface│ ├── PaymentProcessor.cpp # Core processor implementation│├── main.cpp # 🚀 Main entry point├── Makefile # 🔧 Build configuration
 
 ---
 
