@@ -27,4 +27,4 @@ unique_ptr<Document> DocumentManager::createDocument(const string & type, const 
     }
 
     return nullptr;
-};
+}
