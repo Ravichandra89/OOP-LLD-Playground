@@ -19,12 +19,28 @@ void Logger::logs(const string & message) {
 };
 
 // Definition of getLogger instance method + Putting Lock
+// Logger* Logger::getLogger() {
+//     mtx.lock();
+//     if (loggerInstance == nullptr) {
+//         // Create the instance 
+//         loggerInstance = new Logger();
+//     }
+//     cout << "Locked" << endl;
+//     mtx.unlock();
+//     return loggerInstance;
+// }
+
+/**
+ * Double locking - To avoid the overhead of acquiring a lock every time even for getting the instance
+ */
+
 Logger* Logger::getLogger() {
-    mtx.lock();
     if (loggerInstance == nullptr) {
-        // Create the instance 
-        loggerInstance = new Logger();
+        mtx.lock();
+        if (loggerInstance == nullptr) {
+            loggerInstance = new Logger();
+        }
+        mtx.unlock();
     }
-    mtx.unlock();
     return loggerInstance;
 }

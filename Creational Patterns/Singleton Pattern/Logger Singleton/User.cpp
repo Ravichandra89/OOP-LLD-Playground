@@ -14,13 +14,26 @@ void user2Logs() {
     logs2->logs("This is message from User 2");
 }
 
+void user3Logs() {
+    Logger * logs3 = Logger::getLogger();
+    logs3->logs("This is message from User 3");
+}
+
+void user4Logs() {
+    Logger * logs4 = Logger::getLogger();
+    logs4->logs("This is message from User 4");
+}
+
 int main() {
     thread t1(user1Logs);
     thread t2(user2Logs);
+    thread t3(user3Logs);
+    thread t4(user4Logs);
 
     t1.join();
     t2.join();
+    t3.join();
+    t4.join();
 
-    
     return 0;
 }
