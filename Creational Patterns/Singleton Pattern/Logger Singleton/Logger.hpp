@@ -2,12 +2,16 @@
 #define Logger_hpp
 
 #include <string>
+#include <mutex>
+
 using namespace std;
 
 class Logger {
     private: 
         static int count;
         static Logger* loggerInstance;
+        static mutex mtx;
+        
         // Private constructor
         Logger();
     
