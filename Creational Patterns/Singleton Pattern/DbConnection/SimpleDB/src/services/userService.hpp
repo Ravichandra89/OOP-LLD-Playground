@@ -7,7 +7,7 @@ class dbConnection;
 
 // UserService class
 class userService {
-    dbConnection * db;
+    dbConnection & db;
 
     public:
         explicit userService(dbConnection & db) : db(db) {};
