@@ -1,21 +1,19 @@
-#ifndef dbConnection_hpp
-#define dbConnection_hpp
+#ifndef DBCONNECTION_HPP
+#define DBCONNECTION_HPP
 
 #include <string>
 using namespace std;
 
-// Without singleton pattern 
 class dbConnection {
     static int count;
     string url;
 
-    public: 
-        dbConnection(const string & url); // Responsible for Creating Instance
-        ~dbConnection();
+public:
+    dbConnection(const string& url);
+    ~dbConnection();
 
-        // Connection function
-        void connect();
-        void execute(const string & query);
+    void connect();
+    void execute(const string& query);
 };
 
 #endif

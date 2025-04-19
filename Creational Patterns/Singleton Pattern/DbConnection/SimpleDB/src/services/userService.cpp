@@ -1,16 +1,12 @@
-#include <iostream>
 #include "userService.hpp"
-#include "../db/dbConnection.hpp"
-
+#include <iostream>
 using namespace std;
 
-userService::userService(dbConnection & db) : db(db) {};
+userService::userService(dbConnection &db) : db(db) {}
 
-void userService::getUserById(int userId) {
+void userService::getUserById(int userId)
+{
     db.connect();
-    string query = "SELECT * FROM users WHERE id=" + to_string(userId);
+    string query = "SELECT * FROM users WHERE id = " + to_string(userId);
     db.execute(query);
-};
-
-
-
+}

@@ -1,17 +1,14 @@
-#ifndef orderService_hpp
-#define orderService_hpp
+#ifndef ORDERSERVICE_HPP
+#define ORDERSERVICE_HPP
 
-#include <string>
-using namespace std;
-
-class dbConnection;
+#include "../db/dbConnection.hpp"
 
 class orderService {
-    dbConnection & db;
+    dbConnection& db;
 
-    public:
-        explicit orderService(dbConnection & db) : db(db) {};
-        void getOrderById(int orderId);
+public:
+    explicit orderService(dbConnection& db);
+    void getOrderById(int orderId);
 };
 
 #endif

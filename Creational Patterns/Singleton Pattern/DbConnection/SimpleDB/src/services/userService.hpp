@@ -1,17 +1,14 @@
-#ifndef userService_hpp
-#define userService_hpp
+#ifndef USERSERVICE_HPP
+#define USERSERVICE_HPP
 
-#include <string>
+#include "../db/dbConnection.hpp"
 
-class dbConnection;
-
-// UserService class
 class userService {
-    dbConnection & db;
+    dbConnection& db;
 
-    public:
-        explicit userService(dbConnection & db) : db(db) {};
-        void getUserById(int userId);
+public:
+    explicit userService(dbConnection& db);
+    void getUserById(int userId);
 };
 
 #endif
