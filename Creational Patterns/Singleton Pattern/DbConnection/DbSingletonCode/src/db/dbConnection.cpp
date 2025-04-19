@@ -10,7 +10,8 @@ int dbConnection::count = 0;
 
 dbConnection::dbConnection(const string & url) : dbUrl(url) {
     count++;
-    cout << "Database connection created. URL: " << dbUrl << " count: " << count<< endl;
+    cout << endl;
+    cout << "Database connection created. URL: " << dbUrl << endl << " Instance count : " << count<< endl;
 };
 
 // Singleton locking logic
