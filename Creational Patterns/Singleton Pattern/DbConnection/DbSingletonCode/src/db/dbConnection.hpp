@@ -2,6 +2,7 @@
 #define dbConnection_hpp
 
 #include <string>
+#include <mutex>
 using namespace std;
 
 class dbConnection {
@@ -9,6 +10,7 @@ class dbConnection {
         static dbConnection* dbInstance;
         static int count;
         string dbUrl;
+        static mutex mtx;
 
         // private Constructor
         dbConnection(const string & url);

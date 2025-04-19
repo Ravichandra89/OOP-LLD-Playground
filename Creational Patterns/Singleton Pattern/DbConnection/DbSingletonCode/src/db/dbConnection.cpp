@@ -1,12 +1,14 @@
 #include <iostream>
 #include "dbConnection.hpp"
 #include <string>
+#include <mutex>
 
 using namespace std;
 
 // Initialize static members
 dbConnection* dbConnection::dbInstance = nullptr;
 int dbConnection::count = 0;
+mutex dbConnection::mtx;
 
 dbConnection::dbConnection(const string & url) : dbUrl(url) {
     count++;
@@ -14,10 +16,24 @@ dbConnection::dbConnection(const string & url) : dbUrl(url) {
     cout << "Database connection created. URL: " << dbUrl << endl << " Instance count : " << count<< endl;
 };
 
-// Singleton locking logic
+// // Singleton locking logic
+// dbConnection* dbConnection::getInstance(const string & url) {
+//     mtx.lock();
+//     if (dbInstance == nullptr) {
+//         dbInstance = new dbConnection(url);
+//     }
+//     mtx.unlock();
+//     return dbInstance;
+// }
+
+// Double locking 
 dbConnection* dbConnection::getInstance(const string & url) {
     if (dbInstance == nullptr) {
-        dbInstance = new dbConnection(url);
+        mtx.lock();
+        if (dbInstance == nullptr) {
+            dbInstance = new dbConnection(url);
+        }
+        mtx.unlock();
     }
     return dbInstance;
 }
