@@ -6,7 +6,7 @@ using namespace std;
 class IpaymentGateway {
     public:
         virtual ~IpaymentGateway() = default;
-        virtual void processPayment(double amount) = 0;
+        virtual bool processPayment(double amount) = 0;
 };
 
 #endif

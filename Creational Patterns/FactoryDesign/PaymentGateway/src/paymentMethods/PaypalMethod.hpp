@@ -7,10 +7,7 @@ using namespace std;
 
 class PaypalMethod : public IpaymentGateway {
     public:
-        void processPayment(double amount) override {
-            cout << "Processing payment of $" << amount << " through PayPal." << endl;
-
-        }
+        bool processPayment(double amount) override;
 };
 
 #endif

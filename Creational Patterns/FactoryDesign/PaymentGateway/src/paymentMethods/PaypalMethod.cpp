@@ -1,8 +1,10 @@
 #include <iostream>
-#include "./PaypalPayment.hpp"
+#include "PaypalMethod.hpp"
 
 using namespace std;
 
-void PaypalPayment::processPayment(double amount) {
-    cout << "Processing payment of $" << amount << " via PayPal..." << endl;
+bool PaypalMethod::processPayment(double amount)
+{
+    cout << "Processing payment of $" << amount << " through PayPal." << endl;
+    return true;
 }
