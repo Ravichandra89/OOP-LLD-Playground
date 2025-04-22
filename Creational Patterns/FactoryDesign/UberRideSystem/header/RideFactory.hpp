@@ -2,14 +2,15 @@
 #define RideFactory_hpp
 
 #include <iostream>
-#include "Ride.hpp"
 #include <memory>
 #include <string>
+
+#include "Ride.hpp"
 
 class RideFactory
 {
 public:
-    static unique_ptr<Ride> createRide(const string &RideType);
+    static std::unique_ptr<Ride> createRide(const std::string &RideType);
 };
 
 #endif

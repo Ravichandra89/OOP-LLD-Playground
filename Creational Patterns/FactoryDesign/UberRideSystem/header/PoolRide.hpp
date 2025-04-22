@@ -6,19 +6,17 @@
 using namespace std;
 
 class PoolRide : public Ride {
-    double ans = 0.0;
     public: 
         string getRideType() const override {
             return "Pool Ride";
         };
 
         double calculateFare(double distance) override {
-            ans = 5.0 + (distance * 3.0); 
-            return ans;
+            return 5.0 + (distance * 3.0); 
         }
 
         void book(double distance ) override {
-            cout << "🚕 Booking a Pool Ride for " << distance << " km. Total fare: ₹" << ans << endl;
+            cout << "🚕 Booking a Pool Ride for " << distance << " km. Total fare: ₹" << calculateFare(distance) << endl;
         }
 };
 
