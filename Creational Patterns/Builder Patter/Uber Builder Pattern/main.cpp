@@ -19,7 +19,7 @@ This pattern tackles the complexity of constructing objects with many optional p
 // Builder/
 // ├── ITripBuilder.hpp
 // └── UberTripBuilder.hpp
-//   └── UberTripBuilder.cpp
+//     UberTripBuilder.cpp
 // Product/
 // ├── Trip.hpp
 // └── Trip.cpp
@@ -27,3 +27,31 @@ This pattern tackles the complexity of constructing objects with many optional p
 // ├── TripDirector.hpp
 // └── TripDirector.cpp
 // main.cpp
+
+#include "builder/UberTripBuilder.hpp"
+#include "builder/SharedTripBuilder.hpp"
+#include "director/TripDirector.hpp"
+#include <memory>
+
+int main()
+{
+    // Uber Trip
+    UberTripBuilder uberBuilder;
+    TripDirector director1(&uberBuilder);
+    director1.ConstructAirportTrip();
+    std::unique_ptr<Trip> uberTrip(uberBuilder.build());
+    uberTrip->showDetails();
+
+    // Shared Trip
+    SharedTripBuilder sharedBuilder;
+    sharedBuilder.setPickup("Connaught Place");
+    sharedBuilder.setDrop("New Delhgi Railway Station");
+    sharedBuilder.setCarType("Shared");
+    sharedBuilder.setPayment("UPI");
+    sharedBuilder.setPromoCode("SAVE50");
+    sharedBuilder.addRoutePref("Avoid Tolls");
+    unique_ptr<Trip> sharedTrip(sharedBuilder.build());
+    sharedTrip->showDetails();
+
+    return 0;
+}
