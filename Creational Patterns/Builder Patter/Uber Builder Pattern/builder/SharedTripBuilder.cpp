@@ -3,7 +3,7 @@
 
 SharedTripBuilder::SharedTripBuilder() : st(new Trip()) {};
 
-SharedTripBuilder::SharedTripBuilder()
+SharedTripBuilder::~SharedTripBuilder()
 {
     if (st)
         delete st;

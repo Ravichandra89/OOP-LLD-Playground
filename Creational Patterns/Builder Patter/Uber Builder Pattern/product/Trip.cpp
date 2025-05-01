@@ -7,7 +7,7 @@ Trip::Trip() : carType("standard"), paymentMethod("Card"), promoCode(""), childS
 
 void Trip::showDetails() const
 {
-    cout << "<-------Your Trip details------->";
+    cout << "\n <-------Your Trip details------->" << endl;
     cout << "Pickup Location: " << pickupLocation << endl;
     cout << "Drop Location : " << dropLocation << endl;
     cout << "Car Type for Trip: " << carType << endl;

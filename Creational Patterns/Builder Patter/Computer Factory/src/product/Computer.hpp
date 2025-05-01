@@ -15,7 +15,7 @@ public:
     void setCPU(const string &cpu);
     void setRAM(const string &ram);
     void setStorage(const string &storage);
-    void displayInfo() const;
+    void displayInfo() const; 
 };
 
 #endif

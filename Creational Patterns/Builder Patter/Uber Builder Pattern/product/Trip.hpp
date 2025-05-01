@@ -11,6 +11,7 @@ class ITripBuilder;
 class Trip {
     friend class ITripBuilder;
     friend class UberTripBuilder;
+    friend class SharedTripBuilder;
 
     private: 
         string pickupLocation;
