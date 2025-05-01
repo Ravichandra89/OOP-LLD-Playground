@@ -3,13 +3,13 @@
 
 #include "../components/ICoffe.hpp"
 
-class CoffeDecorator {
-       ICoffe * coffeDecorator;
-    public:
-        // Initilize the CoffeDecorator
+class CoffeDecorator : public ICoffe {
+    protected : 
+        ICoffe * coffeDecorator;
+    public : 
         CoffeDecorator(ICoffe* coffe) : coffeDecorator(coffe) {};
         virtual ~CoffeDecorator() {
-            if (coffeDecorator) delete coffeDecorator;
+            delete coffeDecorator;
         }
 };
 
