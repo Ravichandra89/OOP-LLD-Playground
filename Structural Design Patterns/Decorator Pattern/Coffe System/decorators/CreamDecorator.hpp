@@ -9,4 +9,5 @@ class CreamDecorator : public CoffeDecorator {
         string getDescription() const override;
         double getCoffeCost() const override;
 };
+
 #endif
