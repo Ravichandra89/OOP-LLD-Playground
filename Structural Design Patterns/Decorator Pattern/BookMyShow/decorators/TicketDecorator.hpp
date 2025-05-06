@@ -8,7 +8,7 @@ class TicketDecorator : public ITicketPrice {
         ITicketPrice * ticket;
     public: 
         TicketDecorator(ITicketPrice* ticket);
-        virtual ~TicketDecorator() = default;
+        virtual ~TicketDecorator();
 };
 
 #endif
