@@ -10,7 +10,7 @@ using namespace std;
 
 class IStorage {
     public: 
-        virtual void upload(const string & imagePath) = 0;
+        virtual string upload(const string & imagePath) = 0;
         virtual ~IStorage() = default;
 };
 
