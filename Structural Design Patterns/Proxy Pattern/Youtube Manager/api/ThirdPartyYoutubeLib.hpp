@@ -19,7 +19,7 @@ class ThirdPartyYoutubeLib {
         virtual ~ThirdPartyYoutubeLib() = default;
         virtual vector<Video> listVideos() = 0;
         virtual Video getVideoInfo(const string & id) = 0;
-        virtual void downloadVideos(const string & id) = 0;
+        virtual void downloadVideo(const string & id) = 0;
 };
 
 #endif
