@@ -1,13 +1,10 @@
-/**
- * Payment Gayeway Interface for all payment gateways like PayPal, Stripe, Razorpay, etc...
- */
-#ifndef AMAZON_BRIDGE_PATTERN_IMPLEMENTOR_PAYMENTGATEWAY_HPP
-#define AMAZON_BRIDGE_PATTERN_IMPLEMENTOR_PAYMENTGATEWAY_HPP
+#ifndef PAYMENT_GATEWAY_HPP
+#define PAYMENT_GATEWAY_HPP
 
 class PaymentGateway {
     public: 
-        virtual void Transfer(double amount) = 0;
         virtual ~PaymentGateway() = default;
+        virtual void transfer(double amount) = 0;
 };
 
 #endif
