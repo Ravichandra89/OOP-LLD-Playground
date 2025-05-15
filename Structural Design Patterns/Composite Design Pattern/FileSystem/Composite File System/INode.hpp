@@ -10,9 +10,10 @@
 #include <string>
 
 class INode {
-    virtual ~INode() = default;
-    virtual void print(int indent = 0) const = 0;
-    virtual size_t getSize() const = 0;
+    public: 
+        virtual ~INode() = default;
+        virtual void print(int indent = 0) const = 0;
+        virtual size_t getSize() const = 0;
 };
 
 #endif
