@@ -10,6 +10,7 @@ using namespace std;
 
 class Section : public IGoogleDocument {
         string title_;
+        vector<unique_ptr<IGoogleDocument>> childrens;
     
     public: 
         // Constructor 
@@ -23,7 +24,7 @@ class Section : public IGoogleDocument {
         string getText() const override;
         int wordCount() const override;
         vector<const IGoogleDocument*> search(const string &keyword) const override;
-        
+
 };
 
 #endif
