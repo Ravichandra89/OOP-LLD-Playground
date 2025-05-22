@@ -1,10 +1,11 @@
 #ifndef COMPOSITE_PATTERN_UBER_RIDE_FARE_VARIBLE_HPP
 #define COMPOSITE_PATTERN_UBER_RIDE_FARE_VARIBLE_HPP
 
-#include "BaseFare.hpp"
+#include "RideFare.hpp"
 #include <string>
+using namespace std;
 
-class VariableFare : public BaseFare {
+class VariableFare : public RideFare {
         string name;
         double unitRate, units;
     
