@@ -1,0 +1,36 @@
+// Before Facade Pattern - Hotel Booking Example
+
+BookFlight fly;
+BookHotel hotel;
+BookCarOnRent cars;
+PaymentProceed payment;
+ 
+auto ticket = fly.searchAndBookFlight("From", "to");
+auto room = hotel.bookHotelRoom(...);
+auto car = cars.BookCar(...);
+pay.makePayment(amount);
+ 
+
+
+// After the Facade Pattern Applies
+
+Class TripeBookingService {\
+    BookFlight flight;
+    BookHotel hotel;
+    BookCarOnRent cars;
+    PaymentProceed payment;
+
+public: 
+    BookingConfirmation bookTrip(details) {
+        auto ticket = flight.searchAndBookFlight(...);
+        auto room = hotel.bookHotelRoom(...);
+        auto car = cars.BookCar(...);
+        pay.makePayment(amount);
+
+        return {ticket, room, car};
+    }
+};
+
+// Client Code
+TripBookingService tSvc;
+auto confirmBooking = tSvc.bookTrip(myDetails);
