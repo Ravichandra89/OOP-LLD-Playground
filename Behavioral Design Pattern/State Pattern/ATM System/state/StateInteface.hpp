@@ -1,6 +1,8 @@
 #ifndef STATE_INTERFACE_HPP
 #define STATE_INTERFACE_HPP
 
+#include "../contexts/ATMContext.hpp"
+
 class AtmContext;
 
 class StateInterface {

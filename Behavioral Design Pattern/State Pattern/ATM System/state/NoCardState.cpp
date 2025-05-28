@@ -1,4 +1,5 @@
 #include "NoCardState.hpp"
+#include "HasCardState.hpp"
 #include <iostream>
 
 using namespace std;
@@ -7,7 +8,7 @@ using namespace std;
 void NoCardState::insertCard(AtmContext* context) {
     cout << "Card is Inserted" << endl;
     // TODO: Triggers the HasCard State
-
+    context->setState(new HasCardState());
 }
 
 // EjextCard State
