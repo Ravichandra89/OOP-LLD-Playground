@@ -3,6 +3,10 @@ import client from "./client.js";
 const createIndex = async () => {
     await client.indices.create({
         index: "movies",
+        settings: {
+            number_of_replicas: 2,
+            number_of_shards: 3
+        },
         mappings: {
             properties: {
                 title : {
