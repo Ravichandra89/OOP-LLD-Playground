@@ -67,3 +67,20 @@ const createProductIndex = async () => {
     }
 };
 
+
+// Indexing a Single Document
+const indexProduct = async doc => {
+    try {
+        const response = await client.index({
+            index: "products",
+            id: doc.product_id,
+            body: doc,
+            refresh: "wait_for"
+        });
+
+        console.log("Indexed Product", response);
+    } catch (error) {
+        console.error("Unable to put single document into index", error);
+    }
+};
+
