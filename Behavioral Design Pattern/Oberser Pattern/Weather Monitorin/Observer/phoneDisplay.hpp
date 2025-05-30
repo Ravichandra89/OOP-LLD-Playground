@@ -1,8 +1,6 @@
 #ifndef OBSERVER_PHONE_DISPLAY_HPP
 #define OBSERVER_PHONE_DISPLAY_HPP
 
-#include "Observer.hpp"
-
 #include <iostream>
 using namespace std;
 

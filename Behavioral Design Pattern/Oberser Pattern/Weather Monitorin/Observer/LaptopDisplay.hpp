@@ -1,7 +1,6 @@
 #ifndef LAPTOP_DISPLAY_HPP
 #define LAPTOP_DISPLAY_HPP
 
-#include "Observer.hpp"
 #include <iostream>
 
 class LaptopDisplay : public Observer {
