@@ -1,0 +1,29 @@
+/***
+ * Defining the classes :- 
+ *      - Project 
+ *      - File
+ *      - Upload Urls - Scraper
+ *      - Upload Imgaes - Convertor 
+ *      - AIEditor - Query based Editing 
+ *      - Output Zip - Export   
+ *      - User / Session 
+ * 
+ * Identify the Responsibilities :- 
+ *      - Project : Workspace having groups of related files
+ *      - User : Responsible for storing the Auth data 
+ *      - User sessions : 
+ *      - File : Managing Single file code - Privewable, Editable, exportable
+ *      - Scraper : Live Url to html 
+ *      - HTMLToJSX Convertor : Converts HTML into clean, usable JSX.
+ *      - AIEditor : Can Edit code using natural languages
+ *      - ImageToCodeConvertor 
+ *      - ExportService : Zip the whole code and can download
+ *      
+ * Classes Relation ships : 
+ *      - User -> UserSession (1 User have many sessions)
+ *      - UserSession -> Project (1 Session has many Projecr)
+ *      - Project -> File (1 Project has multiple files (JSX, CSS, HTML, Javascript))
+ *      - AIEditor -> File (Can Edit the Project Files)
+ *      - 
+ */
+
