@@ -1,0 +1,95 @@
+Real-World Scenario: Distributed Cache System with Multiple Eviction Strategies
+
+Context:
+We are designing a high-performance distributed cache system used by a microservices-based e-commerce platform (e.g., Jodhpur Bazar). Each microservice relies heavily on low-latency access to frequently used data such as product catalogs, user profiles, order statuses, etc. The goal of this cache is to reduce load on the primary data store, accelerate response times, and provide intelligent eviction strategies tailored to different types of workloads.
+
+Components Overview:
+
+- Cache Interface (ICacheEvictionPolicy)
+
+    Provides a consistent set of methods like put(key, value), get(key), evict(), and remove(key).
+
+    This abstraction allows us to plug in any eviction strategy with the same high-level behavior.
+
+- Concrete Cache Eviction Strategies:
+
+    1.LRU (Least Recently Used): Evicts the least recently accessed entry.
+
+    2.LFU (Least Frequently Used): Evicts the entry accessed the fewest times.
+
+    3.FIFO (First In First Out): Evicts entries in the order they were inserted.
+
+    4.Random Eviction: Evicts a random entry from the cache.
+
+- Data Structures Used:
+
+    1. LRU: unordered_map + doubly linked list.
+
+    2. LFU: unordered_map + min-heap or frequency buckets.
+
+    3. FIFO: queue + unordered_map.
+
+    4. Random: unordered_map + vector + random index generation.
+
+- Distributed Environment Handling:
+
+    Each node in the distributed system maintains its local cache instance.
+
+    A distributed coordination service (like Kafka, Zookeeper, or Redis Pub/Sub) ensures consistency.
+
+    Nodes can invalidate or replicate entries across others when necessary (e.g., user profile update).
+
+- Usage Example in Real Scenario:
+
+    Product Detail Service uses LRU to cache recently viewed products.
+
+    Search Service uses LFU to cache most frequently searched terms.
+
+    Notification Service uses FIFO to store message delivery status logs.
+
+    Recommendation Engine uses Random to maintain freshness by evicting randomly and introducing new candidates.
+
+- Directory Structure:
+
+distributed_cache/
+|
+|-- include/
+|   |-- ICacheEvictionPolicy.h
+|
+|-- src/
+|   |-- LRUCache.cpp
+|   |-- LFUCache.cpp
+|   |-- FIFOCache.cpp
+|   |-- RandomEvictionCache.cpp
+|   |-- CacheManager.cpp
+|
+|-- main.cpp
+|-- CMakeLists.txt
+|-- README.md
+
+- Design Principles Applied:
+
+    1.SOLID Principles
+
+    Single Responsibility: Each eviction strategy encapsulates its own behavior.
+
+    Open/Closed: New strategies can be added without modifying existing code.
+
+    Liskov Substitution: Any strategy can replace another via the interface.
+
+    Interface Segregation: Only relevant methods are exposed.
+
+    Dependency Inversion: High-level module (CacheManager) depends on abstraction (ICacheEvictionPolicy).
+
+- Advantages:
+
+    Flexibility: Switch strategy per service workload.
+
+    Scalability: Scale out with multiple nodes and coordinated caching.
+
+    Maintainability: Easy to test and modify individual strategies.
+
+    Performance Optimization: Use case-specific strategy improves hit rates and latency.
+
+This real-world distributed cache system helps demonstrate modular architecture, extensibility, and performance tuning, essential for large-scale backend systems.
+
