@@ -12,8 +12,11 @@ class ShippingContext {
 
     public : 
         explicit ShippingContext(unique_ptr<IShippingInterface> initialStrategy);
+
         void setStrategy(unique_ptr<IShippingInterface> strategy);
+
         double calculate(const Order & order) const;
+        
         string currentStrategyName() const;
 };
 
