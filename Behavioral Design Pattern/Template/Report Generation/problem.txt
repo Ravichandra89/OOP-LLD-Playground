@@ -1,0 +1,13 @@
+GenerateReport () {
+    authenticateReport();
+    raw = fetchData();
+    cleanData = validateAndNormalize(raw);
+    processed = applyBusinessLogic(cleanData);
+    formatted = formatReport(processed);
+    exportReport(formatted);
+    archiveOrNotify();
+}
+
+Use Template Design Pattern have family of algorithms that all share the Same high - level steps but differ their internal Implementation.
+
+
