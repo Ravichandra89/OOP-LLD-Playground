@@ -15,7 +15,7 @@ class JavaWebApp : public DevOpsPipeline {
         void runStaticAnalysis() override;
         void packageArtifacts() override;
         void deployApplication() override;
-        void notifyTeam() override;
+        void notify() override;
 };
 
 #endif

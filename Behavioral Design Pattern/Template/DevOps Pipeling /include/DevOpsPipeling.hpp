@@ -20,7 +20,7 @@ public:
         runStaticAnalysis();
         packageArtifacts();
         deployApplication();
-        notifyTeam();
+        notify();
 
         cout << "=== Finished DevOps Pipeline: " << pipelineName() << " ===\n\n";
     }
@@ -39,7 +39,7 @@ protected:
     virtual void packageArtifacts() = 0;
     virtual void deployApplication() = 0;
 
-    virtual void notifyTeam()
+    virtual void notify()
     {
         cout << "[Notify] Sending generic notification: Pipeline "
              << pipelineName() << " completed.\n";
