@@ -26,7 +26,7 @@ class ElectricChargeModule {
         }
 
         // Stop Charging Method
-        void StopCharging() {
+        double StopCharging() {
             if (isCharging_) {
                 // Calculate the total charge duration
                 auto endTime = chrono::system_clock::now();
@@ -34,7 +34,9 @@ class ElectricChargeModule {
                 isCharging_ = false;
                 cout << "[Charger Module] Charging stopped for ID: " << chargeId 
                      << ". Total charge duration: " << hrs << endl;
+                return hrs;
             }
+            return 0.0;
         }
 
         // Charge Fees Method
