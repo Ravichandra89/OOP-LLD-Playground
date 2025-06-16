@@ -2,16 +2,19 @@
 #define PARKING_LOT_SYSTEM_ENUMS_HPP
 
 // Vehicle types Enumeration
-enum class VehicleType {
+enum class VehicleType
+{
     Car,
     Motorcycle,
+    Van,
     Truck,
     Bus,
-    Bicycle
+    ElectricCar
 };
 
 // Parking Spot Type
-enum class ParkingSpotType {
+enum class ParkingSpotType
+{
     COMPACT,
     LARGE,
     HANDICAPPED,
@@ -20,7 +23,8 @@ enum class ParkingSpotType {
 };
 
 // Ticket status for Parking
-enum class TicketStatus {
+enum class TicketStatus
+{
     ACTIVE,
     PAID,
     UNPAID,
@@ -28,14 +32,16 @@ enum class TicketStatus {
 };
 
 // Possible Payment Methods Cash, Card, Rozarpay / UPI
-enum class PaymentMethod {
+enum class PaymentMethodType
+{
     CASH,
     CREDIT_CARD,
     ROZARPAY
 };
 
 // Account Roles
-enum class AccountRole {
+enum class AccountRole
+{
     ADMIN,
     ATTENDANT,
     CUSTOMER

@@ -63,7 +63,7 @@ class ParkingSpot {
         }
 
         // Occupy the parking spot with a vehicle
-        virtual void occupy(const shared_ptr<Vehicle> vehicle) {
+        virtual void occupy(const shared_ptr<Vehicle> &vehicle) {
             is_Free = false;
             currentVehicle = vehicle;
             cout << "Parking spot" << spot_id << " is now occupied by vehicle with license plate: " << vehicle->getLicensePlate() << endl;

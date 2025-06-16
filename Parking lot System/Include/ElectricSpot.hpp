@@ -22,7 +22,7 @@ class ElectricSpot : public ParkingSpot {
         }
 
         // Occupy the spot
-        void occupy(const shared_ptr<Vehicle> vehicle)  override {
+        void occupy(const shared_ptr<Vehicle> vehicle) override {
             ParkingSpot::occupy(vehicle);
 
             // Start charging the Electric Vehicle
@@ -38,6 +38,8 @@ class ElectricSpot : public ParkingSpot {
             // Free up the parking spot
             ParkingSpot::freeSpot();
         }
+    }
 
+};
 
 #endif

@@ -15,6 +15,7 @@ class ParkingDisplayBoard {
     
     public : 
         // Constructor
+        ParkingDisplayBoard() = default;
         ParkingDisplayBoard(const string & id) : boardId(id){};
 
         // Update the free spots count for each type of parking spot;
