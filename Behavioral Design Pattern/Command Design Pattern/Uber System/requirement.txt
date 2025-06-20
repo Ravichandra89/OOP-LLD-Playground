@@ -1,0 +1,6 @@
+Building the Uber System using the Command Design Pattern for the loose decoupling.
+
+1. Command Interface : ITripInterface ->  public : void execute()
+2. Create the Concrete Commands : NotifyDriver, StartTracking, LogTripCommand
+3. Create the Receivers : Driver, Tracking, Logging
+
