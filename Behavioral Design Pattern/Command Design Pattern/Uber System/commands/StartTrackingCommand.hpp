@@ -5,7 +5,13 @@
 #include "../receivers/TrackingService.hpp"
 
 class StartTracking : public ITripCommand {
-    
+        TrackingService * service_;
+    public: 
+        // Constructor
+        explicit StartTracking(TrackingService* svc) : service_(svc) {};
+        void execute() {
+            service_->startTracking();
+        }
 };
 
 #endif
