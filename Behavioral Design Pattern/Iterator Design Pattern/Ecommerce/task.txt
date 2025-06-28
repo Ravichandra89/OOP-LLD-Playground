@@ -1,0 +1,14 @@
+Product -> Structure Product Data fields
+Iterator -> Iterator Inteface
+
+ProductCollection -> Concrete Aggregator -> Fixed Size Array
+FeaturedProducts -> Concrete Aggregator 
+New ArivalsProducts -> Concrete Aggregator -> List
+Category -> Tree Format
+SearchResult -> Pagination 20 Product perpage
+
+Iterator: 
+    FeaturedProducts 
+    NewArivalProducts -> Iterator on List
+    TreeIterator -> For Category (electronics -> phone -> iPhone)
+    CustomerIterator 
