@@ -8,7 +8,7 @@ using namespace std;
 class IRoomElement {
     public : 
         virtual ~IRoomElement() = default;
-        virtual void accpet(Visitor* vis) = 0;
+        virtual void accpet(Visitor& vis) = 0;
 };
 
 #endif
