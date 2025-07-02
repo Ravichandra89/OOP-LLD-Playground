@@ -1,0 +1,3 @@
+- Building the Document Processing System - Using Visitor Design Pattern
+- Elements : DocumentElement (interface) - Pragraph, Table, Image, Header, Chart.
+- Visitor : Visitor(interface) - SpellChecking, RenderVisitor, WordCount, ExportToHtml, toVisitor.
