@@ -8,7 +8,7 @@ using namespace std;
 class IDocument {
     public : 
         virtual ~IDocument() = default;
-        virtual void accept(Visitor& vis) = 0;
+        virtual void accept(IVisitor& vis) = 0;
 };
 
 #endif
