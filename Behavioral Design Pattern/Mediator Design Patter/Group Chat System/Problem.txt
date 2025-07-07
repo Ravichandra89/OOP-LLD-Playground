@@ -1,0 +1,6 @@
+🧠 Real-World Analogy: Group Chat
+Mediator: The ChatRoom acts as a central hub that coordinates communication.
+
+Colleagues: Each User represents a participant in the group chat.
+
+Instead of users sending messages directly to each other, they send messages to the ChatRoom, which forwards it to other users. which implement the loose coupling between the colleagues.
