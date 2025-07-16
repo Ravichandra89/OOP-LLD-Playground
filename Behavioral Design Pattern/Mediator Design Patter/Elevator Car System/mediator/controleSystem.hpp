@@ -35,8 +35,11 @@ public:
     virtual void registerCarPanel(CarPanel *panel) = 0;
 
     // Pickup and drop off requests handlers
-    virtual void requestPickup(int carId, int floor) = 0;
+    virtual void requestPickup(int floor, bool direction) = 0;
     virtual void requestDropOff(int carId, int floor) = 0;
+
+    // UpdateCar Status Method
+    virtual void updateCarStatus(int carId, const string& status) = 0;
 };
 
 #endif
