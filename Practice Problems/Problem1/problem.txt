@@ -1,0 +1,15 @@
+Interview Prompt: “Design a Multi‑Channel Notification Service”
+Interviewer:
+“We need a Notification Service that can send alerts to users via different channels—Email, SMS, Push—and in any format (plain text, HTML, rich push). Notifications must be built from reusable templates, allow per‑user customization, and be sent at scale.
+
+Requirements:
+
+Channel Abstraction: Client code shouldn’t know the details of how Email vs SMS vs Push is sent.
+
+Template Variants: Support multiple notification templates (welcome, password‑reset, order‑confirmation), each with its own data fields.
+
+Immutable Notification Objects: Once built, the notification payload (subject/body/metadata) is fixed.
+
+Extensibility: We’ll add new channels (e.g. WhatsApp, Slack) and new templates without touching existing code.
+
+Template Cloning: For high throughput, we should be able to clone a “master” template and then just inject user‑specific data.”

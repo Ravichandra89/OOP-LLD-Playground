@@ -1,0 +1,90 @@
+- Build Notification Service Supporting multiple Methods of EmailMessage, PushNotification, SMS-Notification 
+
+- Abstract Factory Design Pattern : 
+        superFactory -> NotificationSystem
+        subFactories -> EmailNotification, SMSNotification, PushNotification
+        concrete Products -> etc...
+
+        SuperFactory: 
+            +getFactory(typeOfChannel)
+
+- Sub Factory Design Pattern :
+        creating the subfactories - EmailNotification, SmsNotification, PushNotification
+
+        +Create() // Responsible for creating the Concrete_Products_
+
+- Prototype Pattern : 
+        Building master Template - clone these template for specific user data
+
+- Builder Pattern : 
+        Building the complex object creation step by step.
+        Assembling the payload for template creation.
+
+        NotificationBuilder : 
+            +setTemplate(id)
+            +setReceipent(user)
+            +setData(map<string, string>)
+            +build() // Method for building the notification
+
+        NotificationTemplate (Master) 
+            +clone() // clone Method
+
+- NotificationService (Client) 
+        +sendNotification(channel, templateId, user, user_data_): 
+            - factory = superFactory.getFactory(channel);
+            - builder = builder.build();
+            
+APPROACH 2:: 
+
+1. Selecting Channel  - Abstract Factory Pattern
+2. Creatint Channel   - sub subFactories
+3. Cloned Template    - prototype Pattern
+4. Assembling payload - builder Pattern
+        
+Process : 
+
+- Requirement Gathering -> Channel, Template, users, data, throughput, future extension
+
+-Identify Patterns -> 
+    Abstract Factory
+    Prototype Pattern
+    Builder Pattern
+
+- Define Interfaces 
+- Master Template building 
+- Build the SuperFactory - which return subFactories
+- Impelement subFactories - Producing builders
+- Implement the Builders : 
+    - EmailBuilder
+    - SmsBuilder
+    - PushBuilder 
+
+- Notification class 
+
+
+1. Notification_System_ : 
+    +NotificationFactory getFactory(channelType : channel);
+
+2. abstract_factory_interface:
+    +createBuilder()
+
+3. concrete_factories_ :
+    +emailFactory()
+    +smsFactory()
+    +pushFactory()
+
+4. prototype_interface_ :
+    +NotificationTemplate clone()
+
+5. builder_interface_ (notification_builder) :
+    +setTemplate()
+    +setRecipient()
+    +setData()
+    +build()
+
+6. concrete_builders_ : smsBuilder, emailBuilder, pushBuilder
+    +setTemplate()
+    +setReceipent()
+    +setData()
+    +build()
+
