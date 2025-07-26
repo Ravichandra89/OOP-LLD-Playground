@@ -1,0 +1,50 @@
+Data Store Adapter Problem
+
+Description:
+We have three legacy data store clients—MySQL, MongoDB, and Redis—each with its own unique interface:
+
+• LegacyMySQL: connect(connStr), query(sql):value, update(sql)
+• LegacyMongo: open(uri), find(collection, filter):value, save(collection, document)
+• LegacyRedis: authorize(auth), getKey(key):value, setKey(key, value)
+
+Our repository layer needs a unified interface:
+
+interface IDataStore {
+get(key): string
+put(key, value): void
+}
+
+Requirements:
+
+Clients in the repository layer should only depend on IDataStore and call its get and put methods.
+
+We cannot modify the legacy classes.
+
+We must implement adapters—MySQLAdapter, MongoAdapter, RedisAdapter—to translate get/put calls into the legacy calls.
+
+Demonstrate using each adapter in a client (main.cpp), storing and retrieving values with the unified interface.
+
+Directory Structure:
+
+DataStoreAdapter/
+├── legacy/
+│   ├── LegacyMySQL.hpp
+│   ├── LegacyMongo.hpp
+│   └── LegacyRedis.hpp
+|   └── LegacyDynmoDB.hpp
+├── target/
+│   └── IDataStore.hpp
+├── adapter/
+│   ├── MySQLAdapter.hpp
+│   ├── MongoAdapter.hpp
+│   └── RedisAdapter.hpp
+└── main.cpp
+
+Deliverables:
+
+A problem.txt containing this specification.
+
+C++ adapter classes implementing IDataStore.
+
+main.cpp demonstrating usage of all three adapters.
+
